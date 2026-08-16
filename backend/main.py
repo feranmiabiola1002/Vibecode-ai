@@ -20,6 +20,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+@app.get("/")
+async def root():
+    return {"message": "VibeCode AI Backend is running"}
 
 supabase: Client = create_client(
     os.getenv("SUPABASE_URL"),
@@ -169,6 +172,4 @@ async def vibe(prompt: Prompt):
         "remaining_points": remaining.data[0]["points"] if remaining.data else 0,
         "project_id": prompt.project_id
 }
-    @app.get("/")
-async def root():
-    return {"message": "VibeCode AI Backend is running"}
+    
