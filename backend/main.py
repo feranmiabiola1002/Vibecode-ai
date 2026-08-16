@@ -169,3 +169,6 @@ async def vibe(prompt: Prompt):
         "remaining_points": remaining.data[0]["points"] if remaining.data else 0,
         "project_id": prompt.project_id
 }
+    @app.get("/")
+async def root():
+    return {"message": "VibeCode AI Backend is running"}
